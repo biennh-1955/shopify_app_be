@@ -7,6 +7,8 @@ import { Translation } from './entities/Translation';
 
 dotenv.config();
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 export const AppDataSource = new DataSource({
   type: 'mysql',
   host: process.env.DB_HOST,
@@ -16,6 +18,6 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,
   synchronize: false,   
   logging: false,
-  entities: ['src/entities/*.ts'],
-  migrations: ['src/migrations/*.ts'],
+  entities: isProduction ? ['dist/entities/*.js'] : [Shop, Customization, Translation],
+  migrations: isProduction ? ['dist/migrations/*.js'] : ['src/migrations/*.ts'],
 });

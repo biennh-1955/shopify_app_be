@@ -49,10 +49,14 @@ export const deleteTranslationController = async (req: Request, res: Response) =
 };
 
 export const updateTranslationController = async (req: Request, res: Response) => {
+  const locale = Array.isArray(req.params.locale) ? req.params.locale[0] : req.params.locale;
   const { dto, errors } = await validateDto(req.body);
   if (errors.length > 0) {
     return res.status(400).json({ success: false, message: 'Validation failed', errors });
   }
+
+  // Use locale from URL, override body locale for security
+  dto.locale = locale;
 
   try {
     const translation = await updateTranslation(req.shopify_domain!, dto);

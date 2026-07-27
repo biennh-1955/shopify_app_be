@@ -16,6 +16,6 @@ router.put('/customization', authMiddleware, updateCustomizationController);
 // router translation
 router.post('/translation', authMiddleware, createTranslationController);
 router.delete('/translation/:locale', authMiddleware, deleteTranslationController);
-router.put('/translation', authMiddleware, updateTranslationController);
+router.put('/translation/:locale', authMiddleware, updateTranslationController);
 
 export default router;

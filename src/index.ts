@@ -1,5 +1,5 @@
+/// <reference path="./types/express.d.ts" />
 import 'reflect-metadata';
-import './types/express';
 import express from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 4000;
 
 AppDataSource.initialize()
   .then(() => {
-    console.log('✅ Database connected');
+    console.log('Database connected');
     app.listen(PORT, () => {
       console.log(`Server running at http://localhost:${PORT}`);
     });
