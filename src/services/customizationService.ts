@@ -2,9 +2,8 @@ import { AppDataSource } from '../data-source';
 import { Shop } from '../entities/Shop';
 import { Customization } from '../entities/Customization';
 import { UpdateCustomizationDto } from '../dtos/customizationDto';
-
-const shopRepo = () => AppDataSource.getRepository(Shop);
-const customizationRepo = () => AppDataSource.getRepository(Customization);
+import { shopRepo } from '../repository/shopRepository';
+import { customizationRepo } from '../repository/customizationRepository';
 
 export const upsertCustomization = async (
   shopify_domain: string,

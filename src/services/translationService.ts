@@ -2,9 +2,8 @@ import { AppDataSource } from '../data-source';
 import { Shop } from '../entities/Shop';
 import { Translation } from '../entities/Translation';
 import { TranslationDto } from '../dtos/translationDto';
-
-const shopRepo = () => AppDataSource.getRepository(Shop);
-const translationRepo = () => AppDataSource.getRepository(Translation);
+import { shopRepo } from '../repository/shopRepository';
+import { translationRepo } from '../repository/translationRepository';
 
 const getShopOrThrow = async (shopify_domain: string) => {
   const shop = await shopRepo().findOneBy({ shopify_domain });

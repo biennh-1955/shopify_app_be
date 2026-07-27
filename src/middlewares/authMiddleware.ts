@@ -1,15 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { verifyToken } from '../utils/jwt';
 
-// mở rộng type Request để có field shopify_domain
-declare global {
-  namespace Express {
-    interface Request {
-      shopify_domain?: string;
-    }
-  }
-}
-
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
 

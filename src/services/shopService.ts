@@ -1,9 +1,8 @@
 import { AppDataSource } from '../data-source';
 import { Shop } from '../entities/Shop';
 import { Customization } from '../entities/Customization';
-
-const shopRepo = () => AppDataSource.getRepository(Shop);
-const customizationRepo = () => AppDataSource.getRepository(Customization);
+import { shopRepo } from '../repository/shopRepository';
+import { customizationRepo } from '../repository/customizationRepository';
 
 export const createShop = async (shopify_domain: string, shop_owner: string) => {
   const existing = await shopRepo().findOneBy({ shopify_domain });
