@@ -16,6 +16,7 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
+  // đồng bộ hóa cơ sở dữ liệu với các entity, có thể gây mất dữ liệu
   synchronize: false,   
   logging: false,
   entities: isProduction ? ['dist/entities/*.js'] : [Shop, Customization, Translation],

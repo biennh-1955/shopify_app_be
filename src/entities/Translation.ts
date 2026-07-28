@@ -10,6 +10,7 @@ interface TranslateContent {
 }
 
 @Entity('translation')
+// unique consraint đảm bảo mỗi shop chỉ có 1 bản dịch locale duy nhất
 @Unique(['shop_id', 'locale'])
 export class Translation {
   @PrimaryGeneratedColumn('uuid')
