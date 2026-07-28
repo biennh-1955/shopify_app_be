@@ -4,6 +4,11 @@ dotenv.config();
 
 const SECRET_KEY = process.env.SECRET_KEY as string;
 
+// kiem tra SECRET_KEY có ton tai trong .env hay không
+if (!SECRET_KEY) {
+  throw new Error('Missing SECRET_KEY in environment variables. Please check your .env file.');
+}
+
 // đăng ký 1 token
 export const signToken = (shopify_domain: string): string => {
   return jwt.sign({ shopify_domain }, SECRET_KEY, { expiresIn: '7d' });
